@@ -2,17 +2,18 @@ extends layout
 
 block content
   h1= title
-  p List of ornithology expeditions and notable birds observed.
+    - let items = results;
+  p List of ornithology and notable birds observed.
 
   .container-fluid
     .row
-      each expedition, index in expeditions
+      each ornithology, index in items
         .col-sm-4
           .card
             .card-body(data-index=index style="cursor:pointer;")
-              h5 Expedition Location: #{expedition.location}
-              p Species Spotted: #{expedition.species_spotted}
-              p Duration: #{expedition.duration_days} days
+              h5 ornithology_Location: #{ornithology.ornithology_location}
+              p Species_Spotted: #{ornithology.species_spotted}
+              p Duration_days: #{ornithology.duration_days} days
               button.btn.btn-primary Buy
 
   br
