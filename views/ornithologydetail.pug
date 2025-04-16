@@ -3,9 +3,9 @@ extends layout
 block content
     h1= title
     - let ornithologyid = toShow._id
-    - let ornithology_type = toShow.ornithology_location
-    - let ornithologycost = toShow.species_spotted
-    - let ornithologysize = toShow.duration_days
+    - let ornithology_location = toShow.ornithology_location
+    - let species_spotted = toShow.species_spotted
+    - let duration_days = toShow.duration_days
     
     div
         div.row
@@ -16,10 +16,10 @@ block content
             div #{ornithology_location}
         div.row
             div(class='ornithologyAttr mr-3') Ornithology species_spotted is:
-            div #{ornithologyspecies_spotted}
+            div #{species_spotted}
         div.row
             div(class='ornithologyAttr mr-3') Ornithology duration_days is:
-            div #{ornithologyduration_days}
+            div #{duration_days}
 
 
 
