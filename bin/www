@@ -1,34 +1,17 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies.
- */
+const app = require('../app');  // ✅ Only once
+const debug = require('debug')('s25db05vodnala:server');
+const http = require('http');
 
-import app from "../app.js";
-import debug from "debug";
-import http from "http";
-
-const port = process.env.PORT || 3000;
-app.set("port", port);
+const port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
 
 const server = http.createServer(app);
-
-server.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-});
-
-var app = require('../app');
-var debug = require('debug')('s25wb05vodnala:server');
-var http = require('http');
-
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
 
 /**
  * Normalize a port into a number, string, or false.
