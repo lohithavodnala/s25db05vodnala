@@ -1,0 +1,24 @@
+//- views/costumedetail.pug
+
+extends layout
+
+block content
+  h1= title
+  - let ornithologyid = toShow._id
+  - let rnithology_location = toShow.ornithology_location
+  - let species_spotted = toShow.species_spotted
+  - let duration_days = toShow.duration_days
+
+  div
+    div.row
+      div(class='ornithologyAttr mr-3') ornithology ID is:
+      div #{ornithologyid}
+    div.row
+      div(class='ornithologyAttr mr-3') ornithology_location is:
+      div #{ornithology_location}
+    div.row
+      div(class='ornithologyAttr mr-3') ornithology species_spotted is:
+      div #{species_spotted}
+    div.row
+      div(class='ornithologyAttr mr-3') ornithology duration_days is:
+      div #{duration_days}
