@@ -68,3 +68,21 @@ exports.ornithology_delete = async function(req, res) {
         res.send(`{"error": ${err}}`);
     }
 };
+
+
+const Ornithology = require('../models/ornithology');  // Adjust the path if necessary
+
+// Handle a show one view with id specified by query
+exports.ornithology_view_one_Page = async function(req, res) {
+  console.log("single view for id " + req.query.id);
+  try {
+    const result = await Ornithology.findById(req.query.id);
+    res.render('ornithologydetail', {
+      title: 'Ornithology Detail',
+      toShow: result
+    });
+  } catch (err) {
+    res.status(500);
+    res.send(`{'error': '${err}'}`);
+  }
+};
