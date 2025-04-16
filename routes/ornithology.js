@@ -17,6 +17,9 @@ var router = express.Router();
 router.get('/', ornithology_controlers.ornithology_view_all_Page );
 module.exports = router;
 
+router.delete('/:id', ornithology_controlers.ornithology_delete);
+
+
 
 
 
