@@ -11,9 +11,7 @@ router.get('/', function(req, res, next) {
   res.render('ornithology', { title: "Search Results - Ornithology Expeditions", expeditions });
 });
 
-const express = require('express');
-const router = express.Router();
-const ornithologyController = require('../controllers/ornithology_controller');  // Adjust path
+const ornithologyController = require('../controllers/ornithology');  // Adjust path
 
 // Route to show the details of one ornithology
 router.get('/ornithologies/detail', ornithologyController.ornithology_view_one_Page);
