@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+.ornithologyAttr {
+  background-color: lightblue;
+  width: 150px;
+  font-weight: bold;
+  padding: 5px;
+}
+

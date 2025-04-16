@@ -98,18 +98,40 @@ exports.ornithology_detail = async function(req, res) {
     }
     };
 
-    // Handle Costume delete on DELETE.
+    const Ornithology = require('../models/ornithology');
+
+
 exports.ornithology_delete = async function(req, res) {
     console.log("delete " + req.params.id);
     try {
-        const result = await Costume.findByIdAndDelete(req.params.id);
-        console.log("Removed " + result);
-        res.send(result);
+      const result = await Ornithology.findByIdAndDelete(req.params.id);
+      console.log("Removed " + result);
+      res.send(result);
     } catch (err) {
-        res.status(500);
-        res.send(`{"error": Error deleting ${err}}`);
+      res.status(500);
+      res.send({ error: `Error deleting: ${err}` });
     }
-};
-    
+  };
+
+
+  // Display a single ornithology entry (detail page)
+exports.ornithology_view_one_Page = async function(req, res) {
+    console.log("Single view for id " + req.query.id);
+    try {
+      const result = await Ornithology.findById(req.query.id);
+      res.render('ornithologydetail', {
+        title: 'Ornithology Detail',
+        toShow: result
+      });
+    } catch (err) {
+      res.status(500);
+      res.send(`{'error': '${err}'}`);
+    }
+  };
+  
+  
+
+
+
 
 

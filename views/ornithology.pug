@@ -29,3 +29,31 @@ block content
 
 
 
+    extends layout
+
+block content
+  h1= title
+  - let birdId = toShow._id
+  - let location = toShow.ornithology_location
+  - let species = toShow.species_spotted
+  - let days = toShow.duration_days
+
+  div.row
+    div(class='ornithologyAttr mr-3') ID:
+    div= birdId
+  div.row
+    div(class='ornithologyAttr mr-3') Location:
+    div= location
+  div.row
+    div(class='ornithologyAttr mr-3') Species:
+    div= species
+  div.row
+    div(class='ornithologyAttr mr-3') Duration (days):
+    div= days
+
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var ornithology_controller = require('../controllers/ornithology');
 
 /* GET ornithology expeditions listing. */
 router.get('/', function(req, res, next) {
@@ -19,6 +20,7 @@ module.exports = router;
 
 router.delete('/:id', ornithology_controlers.ornithology_delete);
 
+router.get('/detail', ornithology_controller.ornithology_view_one_Page);
 
 
 
