@@ -1,4 +1,4 @@
-const Ornithology = require('../models/ornithology'); // Adjust the path as needed
+const Ornithology = require('../models/ornithology'); // Declare only once at the top
 
 // GET all ornithology records
 exports.ornithology_list = async function(req, res) {
@@ -69,20 +69,18 @@ exports.ornithology_delete = async function(req, res) {
     }
 };
 
-
-const Ornithology = require('../models/ornithology');  // Adjust the path if necessary
-
-// Handle a show one view with id specified by query
+// View one ornithology record in detail
 exports.ornithology_view_one_Page = async function(req, res) {
-  console.log("single view for id " + req.query.id);
-  try {
-    const result = await Ornithology.findById(req.query.id);
-    res.render('ornithologydetail', {
-      title: 'Ornithology Detail',
-      toShow: result
-    });
-  } catch (err) {
-    res.status(500);
-    res.send(`{'error': '${err}'}`);
-  }
+    console.log("single view for id " + req.query.id);
+    try {
+        const result = await Ornithology.findById(req.query.id);
+        res.render('ornithologydetail', {
+            title: 'Ornithology Detail',
+            toShow: result
+        });
+    } catch (err) {
+        res.status(500);
+        res.send(`{'error': '${err}'}`);
+    }
 };
+
