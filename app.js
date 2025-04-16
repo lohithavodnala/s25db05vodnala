@@ -4,12 +4,19 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+regular('dotenv').config();
+const connectionString = process.env.MONGO_CON
+mongoose = require('mongoose');
+mongoose.connect(connectionString);
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var ornithologyRouter = require('./routes/ornithology');
 var gridRouter = require('./routes/grid');
 var pickRouter = require('./routes/pick');
 var Ornithology = require("./models/ornithology");
+var resourceRouter = require("./routes/resourse");
+
 
 var app = express();
 
@@ -28,6 +35,7 @@ app.use('/users', usersRouter);
 app.use('/ornithology', ornithologyRouter);
 app.use('/grid', gridRouter);
 app.use('/pick', pickRouter);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
@@ -44,13 +52,6 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-// MongoDB connection
-require('dotenv').config();
-const connectionString = process.env.MONGO_CON
-mongoose = require('mongoose');
-mongoose.connect(connectionString);
-
-
 
 //Get the default connection
 var db = mongoose.connection;
@@ -59,6 +60,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once("open", function () {
   console.log("Connection to DB succeeded")
 });
+
+module.exports = app;
 
 // We can seed the collection if needed onserver start
 async function recreateDB() {
