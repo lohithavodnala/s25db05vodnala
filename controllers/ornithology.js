@@ -115,14 +115,12 @@ exports.ornithology_delete = async function(req, res) {
 
 
   // Display a single ornithology entry (detail page)
-exports.ornithology_view_one_Page = async function(req, res) {
-    console.log("Single view for id " + req.query.id);
+  exports.ornithology_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id);
     try {
       const result = await Ornithology.findById(req.query.id);
-      res.render('ornithologydetail', {
-        title: 'Ornithology Detail',
-        toShow: result
-      });
+      console.log("Fetched document:", result); // 👈 Add this line
+      res.render('ornithologydetail', { title: 'Ornithology Detail', toShow: result });
     } catch (err) {
       res.status(500);
       res.send(`{'error': '${err}'}`);
