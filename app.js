@@ -101,6 +101,13 @@ async function recreateDB() {
 let reseed = true;
 if (reseed) { recreateDB(); }
 
+var express = require('express');
+var app = express();
+
+// your middlewares, routes, etc.
+
+module.exports = app;
+
 
 
 
